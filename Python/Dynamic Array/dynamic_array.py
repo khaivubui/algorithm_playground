@@ -12,9 +12,8 @@ class DynamicArray(object):
     def __getitem__(self, k):
         if not 0 <= k < self.n:
             return IndexError('K is out of bounds!')
-
         return self.A[k]
 
     def append(self, ele):
         if self.n == self.capacity:
-            self._resize
+            self._resize(2 * self.capacity)
