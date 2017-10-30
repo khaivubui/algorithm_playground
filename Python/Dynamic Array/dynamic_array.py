@@ -2,18 +2,27 @@ import ctypes
 
 class DynamicArray(object):
     def __init__(self):
-        self.n = 0
+        self.count = 0
         self.capacity = 1
         self.A = self.make_array(self.capacity)
 
     def __len__(self):
-        return self.n
+        return self.count
 
     def __getitem__(self, k):
-        if not 0 <= k < self.n:
+        if not 0 <= k < self.count:
             return IndexError('K is out of bounds!')
         return self.A[k]
 
     def append(self, ele):
-        if self.n == self.capacity:
+        if self.count == self.capacity:
             self._resize(2 * self.capacity)
+        self.A[self.count] = ele
+        self.count += 1
+
+    def _resize(self, new_cap):
+        B = self.make_array(new_cap)
+        for k in range(self.n):
+            B[k] = self.A[k]
+        self.A = B
+        self.capacity = new_cap
