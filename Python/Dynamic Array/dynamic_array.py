@@ -26,3 +26,6 @@ class DynamicArray(object):
             B[k] = self.A[k]
         self.A = B
         self.capacity = new_cap
+
+    def make_array(self, new_cap):
+        return (new_cap * ctypes.py_object)()
