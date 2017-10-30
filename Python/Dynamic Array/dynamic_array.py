@@ -22,7 +22,7 @@ class DynamicArray(object):
 
     def _resize(self, new_cap):
         B = self.make_array(new_cap)
-        for k in range(self.n):
+        for k in range(self.count):
             B[k] = self.A[k]
         self.A = B
         self.capacity = new_cap
